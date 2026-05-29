@@ -100,6 +100,33 @@ const menus = [
       }
     ]
   },
+    {
+    title: "Event & Festival",
+    icon: Users,
+    submenu: [
+      {
+        title: "Upcoming Festivals",
+        path: "/Upcoming-Festivals",
+        icon: Landmark
+      },
+      {
+        title: "Banner Uploads",
+        path: "/Banner-Uploads",
+        icon: Image
+      },
+      {
+        title: "Push Notifications",
+        path: "/Push-Notifications",
+        icon: CalendarDays
+      },
+       {
+        title: "SMS Alerts",
+        path: "/SMS-Alerts",
+        icon: CalendarDays
+      },
+      
+    ]
+  },
 
   {
     title: "Users",
@@ -124,7 +151,7 @@ function Sidebar() {
   }
 
   return (
-    <div className="w-64 h-screen bg-slate-900 text-white flex flex-col">
+    <div className="w-68 h-screen bg-slate-900 text-white flex flex-col">
       {/* Logo */}
       <div className="p-4 border-b border-slate-700">
         <img

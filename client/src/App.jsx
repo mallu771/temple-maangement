@@ -25,6 +25,10 @@ import CommitteeMembers from "./pages/CommitteeMembers";
 import VolunteerTracking from "./pages/VolunteerTracking";
 import EmployeeManagement from "./pages/EmployeeManagement";
 
+import UpcomingFestivals from "./pages/UpcomingFestivals";
+import BannerUpload from "./pages/BannerUpload "
+import PushNotification from "./pages/PushNotification";
+import SMSAlerts from "./pages/SMSAlerts";
 function App() {
   const token = localStorage.getItem("token")
 
@@ -96,6 +100,22 @@ function App() {
         <Route
           path="/Employee-Management"
           element={<EmployeeManagement />}
+        />
+          <Route
+          path="/Upcoming-Festivals"
+          element={<UpcomingFestivals  />}
+        />
+          <Route
+          path="/Banner-Uploads"
+          element={<BannerUpload />}
+        />
+          <Route
+          path="/Push-Notifications"
+          element={<PushNotification  />}
+        />
+          <Route
+          path="/SMS-Alerts"
+          element={<SMSAlerts  />}
         />
           <Route
             path="/users"
