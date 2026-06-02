@@ -12,12 +12,12 @@ function Header() {
   return (
     <div className="bg-white shadow-sm border-b px-6 py-4 flex items-center justify-between">
       <div>
-        <h1 className="text-2xl font-semibold flex justify-center place-center ">
-          Temple Management Dashboard
+        <h1 className="text-2xl font-semibold flex items-center gap-2">
+          Shree MahaLaxmi Prasanna Temple
         </h1>
 
         <p className="text-gray-500 text-sm">
-          Welcome back Temple
+          Welcome back to the Temple
         </p>
       </div>
 

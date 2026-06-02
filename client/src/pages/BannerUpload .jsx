@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import Breadcrumbs from "../components/layout/Breadcrumbs"
 export default function BannerUpload() {
   const [banner, setBanner] = useState(null);
 
@@ -13,6 +13,7 @@ export default function BannerUpload() {
 
   return (
     <div className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow">
+      <Breadcrumbs />
       <h2 className="text-2xl font-bold mb-4">
         Festival Banner Upload
       </h2>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import Breadcrumbs from "../components/layout/Breadcrumbs"
 export default function CommitteeMembers() {
   const [members, setMembers] = useState([
     {
@@ -18,6 +18,7 @@ export default function CommitteeMembers() {
 
   return (
     <div className="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow">
+      <Breadcrumbs />
       <h2 className="text-2xl font-bold mb-6">
         Temple Committee Members
       </h2>

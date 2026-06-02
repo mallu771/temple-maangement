@@ -29,6 +29,23 @@ import UpcomingFestivals from "./pages/UpcomingFestivals";
 import BannerUpload from "./pages/BannerUpload "
 import PushNotification from "./pages/PushNotification";
 import SMSAlerts from "./pages/SMSAlerts";
+
+import TempleAssets from "./pages/TempleAssets"
+import OilInventory from "./pages/OilInventory"
+import FlowerInventory from "./pages/FlowerInventory"
+import DonationItems from "./pages/DonationItems"
+import PrasadaMaterials from "./pages/PrasadaMaterials"
+import DailyAccounts from "./pages/DailyAccounts"
+import AuditReports from "./pages/AuditReports"
+import MonthlyReports from "./pages/MonthlyReports"
+import ExportReports from "./pages/ExportReports";
+import OnlineDonation from "./pages/OnlineDonation";
+import DonationReceipt from "./pages/DonationReceipt";
+import PaymentTracking from "./pages/PaymentTracking";
+import QRPayment from "./pages/QRPayment";
+import RazorpayPayment from "./pages/RazorpayPayment";
+import UpiPayment from "./pages/UpiPayment";
+
 function App() {
   const token = localStorage.getItem("token")
 
@@ -116,6 +133,61 @@ function App() {
           <Route
           path="/SMS-Alerts"
           element={<SMSAlerts  />}
+        />
+         <Route
+          path="/Temple-Assets"
+          element={<TempleAssets  />}
+        />
+         <Route
+          path="/Oil-Stock-Tracking"
+          element={<OilInventory  />}
+        />
+         <Route
+          path="/Flower-Inventory"
+          element={<FlowerInventory  />}
+        />
+         <Route
+          path="/Prasada-Materials"
+          element={<PrasadaMaterials  />}
+        />
+         <Route
+          path="/Donation-Items"
+          element={<DonationItems  />}
+        />
+        <Route
+          path="/Daily-Income-Expense"
+          element={<DailyAccounts  />}
+        />
+           <Route
+          path="/Audit-Reports"
+          element={<AuditReports   />}
+        />
+           <Route
+          path="/Monthly-Reports"
+          element={<MonthlyReports   />}
+        />
+           <Route
+          path="/Export-PDF-Excel"
+          element={<ExportReports   />}
+        />
+         <Route
+          path="/Online-Donation"
+          element={<OnlineDonation/>}
+        /> <Route
+          path="/Donation-Receipt"
+          element={<DonationReceipt    />}
+        /> <Route
+          path="/Payment-Tracking"
+          element={<PaymentTracking    />}
+        /> <Route
+          path="/QR-Payment-Support"
+          element={<QRPayment />}
+        /> <Route
+          path="/Razorpay-Integration"
+          element={<RazorpayPayment    />}
+        /> <Route
+          path="/Upi-Payment"
+          element={<UpiPayment    />}
         />
           <Route
             path="/users"

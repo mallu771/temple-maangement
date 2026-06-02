@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import Breadcrumbs from "../components/layout/Breadcrumbs"
 export default function EmployeeManagement() {
   const [employees, setEmployees] = useState([
     {
@@ -50,6 +50,7 @@ export default function EmployeeManagement() {
 
   return (
     <div className="max-w-5xl mx-auto bg-white p-6 rounded-xl shadow">
+      <Breadcrumbs />
       <h2 className="text-2xl font-bold mb-6">
         Employee Management
       </h2>
