@@ -94,7 +94,7 @@ const menus = [
         icon: Image
       },
       {
-        title: "Employee Management",
+        title: "Employees",
         path: "/Employee-Management",
         icon: CalendarDays
       }
@@ -127,8 +127,107 @@ const menus = [
       
     ]
   },
+{
+    title: "Inventory",
+    icon: Users,
+    submenu: [
+      {
+        title: "Temple Assets",
+        path: "/Temple-Assets",
+        icon: Landmark
+      },
+      {
+        title: "Oil Stock Tracking",
+        path: "/Oil-Stock-Tracking",
+        icon: Image
+      },
+      {
+        title: "Flower Inventory",
+        path: "/Flower-Inventory",
+        icon: CalendarDays
+      },
+       {
+        title: "Prasada Materials",
+        path: "/Prasada-Materials",
+        icon: CalendarDays
+      },
+       {
+        title: "Donation Items",
+        path: "/Donation-Items",
+        icon: CalendarDays
+      },
+    ]
+  },
 
-  {
+{
+    title: "Accounting",
+    icon: Users,
+    submenu: [
+      {
+        title: "Income & Expense",
+        path: "/Daily-Income-Expense",
+        icon: Landmark
+      },
+      {
+        title: "Audit Reports",
+        path: "/Audit-Reports",
+        icon: Image
+      },
+      {
+        title: "Monthly Reports",
+        path: "/Monthly-Reports",
+        icon: CalendarDays
+      },
+       {
+        title: "Export PDF/Excel",
+        path: "/Export-PDF-Excel",
+        icon: CalendarDays
+      },
+      
+    ]
+  },
+
+{
+    title: "Donation",
+    icon: Users,
+    submenu: [
+      {
+        title: "Online Donation",
+        path: "/Online-Donation",
+        icon: Landmark
+      },
+      {
+        title: "Donation Receipt",
+        path: "/Donation-Receipt",
+        icon: Image
+      },
+      {
+        title: "Payment Tracking",
+        path: "/Payment-Tracking",
+        icon: CalendarDays
+      },
+       {
+        title: "QR Payment Support",
+        path: "/QR-Payment-Support",
+        icon: CalendarDays
+      },
+      {
+        title: "Razorpay Integration",
+        path: "/Razorpay-Integration",
+        icon: CalendarDays
+      },{
+        title: "PhonePe Integration",
+        path: "/PhonePe-Integrationt",
+        icon: CalendarDays
+      },{
+        title: "UPI Payment",
+        path: "/UPI-Payment",
+        icon: CalendarDays
+      },
+    ]
+  },
+
+  /* {
     title: "Users",
     path: "/users",
     icon: Users
@@ -138,13 +237,13 @@ const menus = [
     title: "Settings",
     path: "/settings",
     icon: Settings
-  }
+  } */
 ]
 
 function Sidebar() {
   const location = useLocation()
 
-  const [openMenu, setOpenMenu] = useState("Temple Information")
+  const [openMenu, setOpenMenu] = useState("Dashboard")
 
   const toggleMenu = title => {
     setOpenMenu(openMenu === title ? "" : title)
@@ -153,11 +252,11 @@ function Sidebar() {
   return (
     <div className="w-68 h-screen bg-slate-900 text-white flex flex-col">
       {/* Logo */}
-      <div className="p-4 border-b border-slate-700">
+      <div className=" border-b border-slate-700">
         <img
           src="/src/Images/temple.jfif"
           alt="Temple"
-          className="rounded-2xl w-32 mx-auto"
+          className=" w-full mx-auto h-40 rounded"
         />
       </div>
 
