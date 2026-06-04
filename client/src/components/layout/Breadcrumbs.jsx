@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ChevronRight, Home } from "lucide-react";
 import { menuItems } from "./../../jsFiles/menuConfig";
 
-// 🔍 find breadcrumb path recursively
+
 function findBreadcrumbs(menu, pathname) {
   for (let item of menu) {
     if (item.path === pathname) {
@@ -25,11 +25,9 @@ function findBreadcrumbs(menu, pathname) {
 
 export default function Breadcrumbs() {
   const location = useLocation();
-console.log("location:", location);
   const breadcrumbs =
     findBreadcrumbs(menuItems, location.pathname) ||
     [];
-  
   return (
     <div className="flex items-center gap-2 text-sm text-gray-500 mb-5">
       <Link

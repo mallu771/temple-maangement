@@ -10,14 +10,16 @@ import {
   Users,
   CalendarDays,
   CheckCircle2,
-  PartyPopper
+  PartyPopper,
+   Clock3
 } from "lucide-react"
 
 export default function FestivalTicketBooking() {
 
   const [ticket, setTicket] = useState({
     festival: "",
-    tickets: 1
+    tickets: 1,
+     slot: ""
   })
 
   const handleSubmit = (e) => {
@@ -27,7 +29,16 @@ export default function FestivalTicketBooking() {
 
     alert("Festival Tickets Booked Successfully")
   }
+// Add this slots array above return()
 
+const timeSlots = [
+  "06:00 AM - 07:00 AM",
+  "07:00 AM - 08:00 AM",
+  "08:00 AM - 09:00 AM",
+  "10:00 AM - 11:00 AM",
+  "05:00 PM - 06:00 PM",
+  "06:00 PM - 07:00 PM"
+]
   return (
     <div className="min-h-screen bg-gray-100 p-6">
 
@@ -287,6 +298,50 @@ export default function FestivalTicketBooking() {
 
               </div>
 
+{/* Time Slot */}
+<div>
+
+  <label className="block text-gray-700 font-medium mb-2">
+    Select Time Slot
+  </label>
+
+  <div className="relative">
+
+    <Clock3
+      className="absolute left-4 top-4 text-gray-400"
+      size={20}
+    />
+
+    <select
+      className="w-full border border-gray-300 rounded-2xl py-3 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-orange-400 appearance-none"
+      onChange={(e) =>
+        setBooking({
+          ...booking,
+          slot: e.target.value
+        })
+      }
+    >
+
+      <option value="">
+        Select Time Slot
+      </option>
+
+      {timeSlots.map((slot, index) => (
+
+        <option
+          key={index}
+          value={slot}
+        >
+          {slot}
+        </option>
+
+      ))}
+
+    </select>
+
+  </div>
+
+</div>
               {/* Button */}
               <button
                 type="submit"

@@ -111,3 +111,30 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+/* index.css */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f97316;
+  border-radius: 20px;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  @apply bg-gray-100 dark:bg-gray-950;
+}

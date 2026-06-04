@@ -1,402 +1,421 @@
+
 import Sidebar from "../components/layout/Sidebar"
-import Header from "../components/layout/Header"
 import Breadcrumbs from "../components/layout/Breadcrumbs"
+import ProfileMenu from "../components/dashboard/ProfileMenu"
 import {
   Users,
   IndianRupee,
   CalendarDays,
-  Bell,
   Package,
   ShieldCheck,
-  BookOpen,
   Ticket,
   Flower2,
-  TrendingUp
+  TrendingUp,
+  BellRing,
+  Sparkles,
+  ArrowUpRight,
+  Wallet,
+  Activity,
+  Star,
+  UserCircle,
+  Bell,
+  ChevronRight,
+  CircleDollarSign,
+  Clock3,
+   LogOut,
+   ChevronDown,
+  Settings,
+  User,
+  Moon,
 } from "lucide-react"
-     
-  const stats = [
-    {
-      title: "Total Donations",
-      value: "₹ 2,45,000",
-      icon: IndianRupee,
-      color: "bg-green-100 text-green-700"
-    },
-    {
-      title: "Today Bookings",
-      value: "125",
-      icon: Ticket,
-      color: "bg-orange-100 text-orange-700"
-    },
-    {
-      title: "Temple Members",
-      value: "58",
-      icon: Users,
-      color: "bg-blue-100 text-blue-700"
-    },
-    {
-      title: "Upcoming Events",
-      value: "6",
-      icon: CalendarDays,
-      color: "bg-purple-100 text-purple-700"
-    }
-  ]
+import { useState } from "react"
 
-  const recentDonations = [
-    {
-      id: 1,
-      name: "Ramesh",
-      amount: 5000,
-      status: "Success"
-    },
-    {
-      id: 2,
-      name: "Mahesh",
-      amount: 2500,
-      status: "Pending"
-    },
-    {
-      id: 3,
-      name: "Suresh",
-      amount: 1000,
-      status: "Success"
-    }
-  ]
+const stats = [
+  {
+    title: "Total Donations",
+    value: "₹ 2,45,000",
+    growth: "+12%",
+    icon: IndianRupee,
+    color: "from-green-500 to-emerald-500"
+  },
+  {
+    title: "Today Bookings",
+    value: "125",
+    growth: "+8%",
+    icon: Ticket,
+    color: "from-orange-500 to-red-500"
+  },
+  {
+    title: "Temple Members",
+    value: "58",
+    growth: "+4%",
+    icon: Users,
+    color: "from-blue-500 to-indigo-500"
+  },
+  {
+    title: "Upcoming Events",
+    value: "6",
+    growth: "+2%",
+    icon: CalendarDays,
+    color: "from-purple-500 to-pink-500"
+  }
+]
 
-  const events = [
-    {
-      id: 1,
-      name: "Rathotsava",
-      date: "15 June 2026"
-    },
-    {
-      id: 2,
-      name: "Deepotsava",
-      date: "10 July 2026"
-    },
-    {
-      id: 3,
-      name: "Navaratri",
-      date: "01 Oct 2026"
-    }
-  ]
-
-  const inventory = [
-    {
-      item: "Flowers",
-      stock: "120 KG"
-    },
-    {
-      item: "Oil",
-      stock: "60 Liters"
-    },
-    {
-      item: "Prasada Rice",
-      stock: "250 KG"
-    }
-  ]
+const quickActions = [
+  {
+    title: "Book Pooja",
+    icon: Sparkles,
+    color: "bg-orange-500"
+  },
+  {
+    title: "Add Donation",
+    icon: CircleDollarSign,
+    color: "bg-green-500"
+  },
+  {
+    title: "Manage Inventory",
+    icon: Package,
+    color: "bg-blue-500"
+  },
+  {
+    title: "Temple Events",
+    icon: CalendarDays,
+    color: "bg-purple-500"
+  }
+]
 
 function Dashboard() {
+  
   return (
-    <div className="flex">
+    
+    <div className="flex bg-[#f4f7fb] dark:bg-gray-950">
+
+      {/* SIDEBAR */}
       <Sidebar />
 
-      <div className="flex-1 bg-gray-100 min-h-screen">
-        <Header />
+      {/* MAIN CONTENT */}
+      <div className="flex-1 min-h-screen">
 
-        <div className="p-6">
-          <Breadcrumbs />
 
-    
-    <div className="min-h-screen bg-gray-100 p-6">
+        {/* PAGE CONTENT */}
+        <div className="p-8 ">
+       <div className="flex items-center justify-between mb-10">
 
-      {/* Stats */}
-      <div className="grid md:grid-cols-4 gap-6 mb-8">
+  <Breadcrumbs />
 
-        {stats.map((stat, index) => {
-          const Icon = stat.icon
+<div className="flex items-center gap-5">
 
-          return (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-5 shadow"
-            >
-              <div className="flex items-center justify-between">
+  {/* Notification */}
+  <button className="relative bg-gray-100 hover:bg-gray-200 transition w-12 h-12 rounded-2xl flex items-center justify-center">
 
-                <div>
-                  <p className="text-gray-500">
-                    {stat.title}
-                  </p>
+    <Bell size={22} />
 
-                  <h2 className="text-3xl font-bold mt-2">
-                    {stat.value}
-                  </h2>
-                </div>
+    <span className="absolute top-2 right-2 w-3 h-3 bg-red-500 rounded-full" />
 
-                <div
-                  className={`p-4 rounded-xl ${stat.color}`}
-                >
-                  <Icon size={28} />
-                </div>
+  </button>
 
-              </div>
-            </div>
-          )
-        })}
-
-      </div>
-
-      {/* Middle Section */}
-      <div className="grid lg:grid-cols-3 gap-6 mb-8">
-
-        {/* Donations */}
-        <div className="bg-white rounded-2xl shadow p-6 lg:col-span-2">
-
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xl font-bold">
-              Recent Donations
-            </h2>
-
-            <TrendingUp className="text-green-600" />
-          </div>
-
-          <table className="w-full">
-            <thead>
-              <tr className="text-left border-b">
-                <th className="pb-3">Donor</th>
-                <th className="pb-3">Amount</th>
-                <th className="pb-3">Status</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {recentDonations.map((donation) => (
-                <tr
-                  key={donation.id}
-                  className="border-b"
-                >
-                  <td className="py-4">
-                    {donation.name}
-                  </td>
-
-                  <td className="py-4">
-                    ₹ {donation.amount}
-                  </td>
-
-                  <td className="py-4">
-                    <span
-                      className={`px-3 py-1 rounded-full text-sm text-white ${
-                        donation.status === "Success"
-                          ? "bg-green-500"
-                          : "bg-yellow-500"
-                      }`}
-                    >
-                      {donation.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-        </div>
-
-        {/* Upcoming Events */}
-        <div className="bg-white rounded-2xl shadow p-6">
-
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xl font-bold">
-              Upcoming Festivals
-            </h2>
-
-            <CalendarDays className="text-orange-500" />
-          </div>
-
-          <div className="space-y-4">
-
-            {events.map((event) => (
-              <div
-                key={event.id}
-                className="border rounded-xl p-4"
-              >
-                <h3 className="font-semibold">
-                  {event.name}
-                </h3>
-
-                <p className="text-gray-500 text-sm mt-1">
-                  {event.date}
-                </p>
-              </div>
-            ))}
-
-          </div>
-        </div>
-
-      </div>
-
-      {/* Bottom Section */}
-      <div className="grid lg:grid-cols-3 gap-6">
-
-        {/* Inventory */}
-        <div className="bg-white rounded-2xl shadow p-6">
-
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xl font-bold">
-              Inventory
-            </h2>
-
-            <Package className="text-blue-600" />
-          </div>
-
-          <div className="space-y-4">
-
-            {inventory.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between border-b pb-3"
-              >
-                <div className="flex items-center gap-3">
-                  <Flower2
-                    size={18}
-                    className="text-pink-500"
-                  />
-
-                  <span>{item.item}</span>
-                </div>
-
-                <span className="font-semibold">
-                  {item.stock}
-                </span>
-              </div>
-            ))}
-
-          </div>
-
-        </div>
-
-        
-
-           {/* Temple Gold Information */}
-<div className="bg-white rounded-2xl shadow p-6">
-
-  <div className="flex items-center justify-between mb-5">
-    <h2 className="text-xl font-bold">
-      Temple Gold Information
-    </h2>
-
-    <IndianRupee className="text-yellow-600" />
-  </div>
-
-  <div className="space-y-4">
-
-    <div className="border rounded-xl p-4 flex items-center justify-between">
-      <div>
-        <p className="text-gray-500">
-          Gold Ornaments
-        </p>
-
-        <h3 className="text-lg font-bold">
-          12 Items
-        </h3>
-      </div>
-
-      <div className="bg-yellow-100 text-yellow-700 px-4 py-2 rounded-xl font-semibold">
-        2.5 KG
-      </div>
-    </div>
-
-    <div className="border rounded-xl p-4 flex items-center justify-between">
-      <div>
-        <p className="text-gray-500">
-          Silver Items
-        </p>
-
-        <h3 className="text-lg font-bold">
-          28 Items
-        </h3>
-      </div>
-
-      <div className="bg-gray-200 text-gray-700 px-4 py-2 rounded-xl font-semibold">
-        18 KG
-      </div>
-    </div>
-
-    <div className="border rounded-xl p-4 flex items-center justify-between">
-      <div>
-        <p className="text-gray-500">
-          Gold Donations
-        </p>
-
-        <h3 className="text-lg font-bold">
-          This Month
-        </h3>
-      </div>
-
-      <div className="bg-orange-100 text-orange-700 px-4 py-2 rounded-xl font-semibold">
-        350 Grams
-      </div>
-    </div>
-
-    <div className="border rounded-xl p-4 flex items-center justify-between">
-      <div>
-        <p className="text-gray-500">
-          Locker Status
-        </p>
-
-        <h3 className="text-lg font-bold">
-          Security Vault
-        </h3>
-      </div>
-
-      <div className="bg-green-100 text-green-700 px-4 py-2 rounded-xl font-semibold">
-        Secured
-      </div>
-    </div>
-
-  </div>
+  <ProfileMenu />
 
 </div>
+</div>
+          {/* HERO SECTION */}
+          <div className="relative overflow-hidden rounded-[40px] mb-10 shadow-2xl">
 
-        {/* Security */}
-        <div className="bg-white rounded-2xl shadow p-6">
+            {/* Background */}
+            <img
+              src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?q=80&w=1800&auto=format&fit=crop"
+              alt="Temple"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
 
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xl font-bold">
-              Security Status
-            </h2>
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-orange-900/70" />
 
-            <ShieldCheck className="text-green-600" />
+            {/* Blur Effects */}
+            <div className="absolute top-0 right-0 w-72 h-72 bg-orange-500/30 rounded-full blur-3xl" />
+
+            <div className="absolute bottom-0 left-10 w-72 h-72 bg-yellow-500/20 rounded-full blur-3xl" />
+
+            {/* Content */}
+            <div className="relative z-10 p-12 md:p-16 text-white">
+
+              <div className="flex items-center gap-4 mb-6">
+
+                <div className="bg-white dark:bg-gray-900 dark:bg-gray-900/20 backdrop-blur-md p-4 rounded-3xl">
+                  <Sparkles size={34} />
+                </div>
+
+                <div className="bg-orange-500/20 border border-orange-300/30 px-5 py-2 rounded-full backdrop-blur-md">
+                  Temple Management System
+                </div>
+
+              </div>
+
+              <h1 className="text-5xl md:text-7xl font-black leading-tight max-w-5xl">
+                Shri Lakkavva Devi
+                <span className="text-orange-300">
+                  {" "}Temple Dashboard
+                </span>
+              </h1>
+
+              <p className="mt-6 text-lg md:text-xl text-gray-200 dark:text-gray-300 max-w-3xl leading-9">
+                Smart digital platform to manage poojas,
+                donations, devotees, inventory, reports,
+                festivals, and temple administration.
+              </p>
+
+              <div className="flex flex-wrap gap-5 mt-10">
+
+                <button className="bg-orange-500 hover:bg-orange-600 transition px-7 py-4 rounded-2xl font-bold shadow-xl hover:scale-105 flex items-center gap-3">
+
+                  <Activity size={22} />
+
+                  Live Dashboard
+
+                </button>
+
+                <button className="bg-gray-500 dark:bg-gray-900/10 hover:bg-gray-600 dark:hover:bg-gray-800 border border-white/20 backdrop-blur-md transition px-7 py-4 rounded-2xl font-semibold">
+                  View Reports
+                </button>
+
+              </div>
+
+            </div>
+
           </div>
 
-          <div className="space-y-4">
+          {/* STATS */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-7 mb-10">
 
-            <div className="border rounded-xl p-4">
-              <p className="font-semibold">
-                Last Backup
-              </p>
+            {stats.map((stat, index) => {
 
-              <p className="text-gray-500 text-sm">
-                Today 08:30 AM
-              </p>
+              const Icon = stat.icon
+
+              return (
+                <div
+                  key={index}
+                  className="group relative overflow-hidden bg-white dark:bg-gray-900 rounded-[30px] p-7 shadow-sm hover:shadow-2xl transition duration-500 hover:-translate-y-2 border border-gray-100"
+                >
+
+                  <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${stat.color} opacity-10 rounded-full blur-3xl`} />
+
+                  <div className="flex items-center justify-between relative z-10">
+
+                    <div>
+
+                      <p className="text-gray-500 dark:text-gray-400 font-medium">
+                        {stat.title}
+                      </p>
+
+                      <h2 className="text-4xl font-black text-gray-800 dark:text-white mt-3">
+                        {stat.value}
+                      </h2>
+
+                      <div className="flex items-center gap-2 mt-5 text-green-600 font-semibold">
+                        <ArrowUpRight size={18} />
+                        {stat.growth}
+                      </div>
+
+                    </div>
+
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${stat.color} text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition`}>
+
+                      <Icon size={30} />
+
+                    </div>
+
+                  </div>
+
+                </div>
+              )
+            })}
+
+          </div>
+
+          {/* QUICK ACTIONS */}
+          <div className="bg-white dark:bg-gray-900 rounded-[35px] p-8 shadow-sm border border-gray-100 mb-10">
+
+            <div className="flex items-center justify-between mb-8">
+
+              <div>
+                <h2 className="text-3xl font-black text-gray-800 dark:text-white">
+                  Quick Actions
+                </h2>
+
+                <p className="text-gray-500 dark:text-gray-400 mt-2">
+                  Frequently used temple operations
+                </p>
+              </div>
+
+              <button className="text-orange-500 font-semibold flex items-center gap-2">
+                View All
+                <ChevronRight size={18} />
+              </button>
+
             </div>
 
-            <div className="border rounded-xl p-4">
-              <p className="font-semibold">
-                Active Users
-              </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-              <p className="text-gray-500 text-sm">
-                12 Users Online
-              </p>
+              {quickActions.map((action, index) => {
+
+                const Icon = action.icon
+
+                return (
+                  <button
+                    key={index}
+                    className="group p-7 rounded-3xl border border-gray-100 hover:border-orange-200   hover:shadow-xl transition duration-500 text-left"
+                  >
+
+                    <div className={`w-16 h-16 rounded-2xl ${action.color} text-white flex items-center justify-center shadow-lg mb-5 group-hover:scale-110 transition`}>
+
+                      <Icon size={28} />
+
+                    </div>
+
+                    <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+                      {action.title}
+                    </h3>
+
+                    <p className="text-gray-500 dark:text-gray-400 mt-2">
+                      Manage temple operations quickly
+                    </p>
+
+                  </button>
+                )
+              })}
+
             </div>
 
-            <div className="border rounded-xl p-4">
-              <p className="font-semibold">
-                System Status
-              </p>
+          </div>
 
-              <p className="text-green-600 text-sm">
-                Running Normally
-              </p>
+          {/* BOTTOM GRID */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            {/* ACTIVITY */}
+            <div className="bg-white dark:bg-gray-900 rounded-[35px] p-8 shadow-sm border border-gray-100 lg:col-span-2">
+
+              <div className="flex items-center justify-between mb-8">
+
+                <div>
+                  <h2 className="text-3xl font-black text-gray-800 dark:text-white">
+                    Recent Activity
+                  </h2>
+
+                  <p className="text-gray-500 dark:text-gray-400 mt-2">
+                    Temple latest activities & updates
+                  </p>
+                </div>
+
+                <div className="bg-green-100 text-green-600 p-4 rounded-2xl">
+                  <TrendingUp size={28} />
+                </div>
+
+              </div>
+
+              <div className="space-y-6">
+
+                {[1, 2, 3, 4].map((item) => (
+
+                  <div
+                    key={item}
+                    className="flex items-center justify-between p-5 border border-gray-100 rounded-3xl hover:shadow-lg transition"
+                  >
+
+                    <div className="flex items-center gap-4">
+
+                      <div className="w-14 h-14 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center">
+                        <BellRing size={24} />
+                      </div>
+
+                      <div>
+
+                        <h3 className="font-bold text-gray-800 dark:text-white">
+                          New Donation Received
+                        </h3>
+
+                        <p className="text-gray-500 dark:text-gray-400 mt-1">
+                          ₹ 5,000 donated by Ramesh
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                    <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+
+                      <Clock3 size={16} />
+
+                      <span>2 mins ago</span>
+
+                    </div>
+
+                  </div>
+
+                ))}
+
+              </div>
+
+            </div>
+
+            {/* SECURITY */}
+            <div className="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-[35px] p-8 shadow-2xl text-white overflow-hidden relative">
+
+              <div className="absolute top-0 right-0 w-48 h-48 bg-white dark:bg-gray-900/10 rounded-full blur-3xl" />
+
+              <div className="relative z-10">
+
+                <div className="flex items-center justify-between mb-8">
+
+                  <div>
+                    <h2 className="text-3xl font-black">
+                      Security
+                    </h2>
+
+                    <p className="text-indigo-100 mt-2">
+                      System monitoring
+                    </p>
+                  </div>
+
+                  <ShieldCheck size={34} />
+
+                </div>
+
+                <div className="space-y-5">
+
+                  <div className="bg-white dark:bg-gray-900/10 backdrop-blur-md rounded-3xl p-5">
+                    <p className="text-indigo-100">
+                      Last Backup
+                    </p>
+
+                    <h3 className="text-2xl font-black mt-2">
+                      Today 08:30 AM
+                    </h3>
+                  </div>
+
+                  <div className="bg-white dark:bg-gray-900/10 backdrop-blur-md rounded-3xl p-5">
+                    <p className="text-indigo-100">
+                      Active Users
+                    </p>
+
+                    <h3 className="text-2xl font-black mt-2">
+                      12 Users Online
+                    </h3>
+                  </div>
+
+                  <div className="bg-white dark:bg-gray-900/10 backdrop-blur-md rounded-3xl p-5">
+                    <p className="text-indigo-100">
+                      System Status
+                    </p>
+
+                    <h3 className="text-2xl font-black mt-2 text-green-300">
+                      Running Normally
+                    </h3>
+                  </div>
+
+                </div>
+
+              </div>
+
             </div>
 
           </div>
@@ -405,21 +424,9 @@ function Dashboard() {
 
       </div>
 
-    </div>
-
-          <div className="bg-white mt-6 rounded-2xl shadow p-6">
-            <h2 className="text-xl font-semibold mb-4">
-              Dashboard Overview
-            </h2>
-
-            <p className="text-gray-600">
-              Welcome to your admin dashboard.
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
 
 export default Dashboard
+

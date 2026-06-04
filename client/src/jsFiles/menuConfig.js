@@ -42,12 +42,6 @@ export const menuItems = [
     
       },
       {
-        title: "Time-slot",
-        path: "/Time-slot-management",
-     
-      },
-
-      {
         title: "Committee Members",
         path: "/Committee-Members",
       
@@ -116,36 +110,11 @@ export const menuItems = [
         title: "Monthly Reports",
         path: "/Monthly-Reports",
       },
-       {
-        title: "Export PDF/Excel",
-        path: "/Export-PDF-Excel",
-      },
         {
         title: "Online Donation",
         path: "/Online-Donation",
       },
-      {
-        title: "Donation Receipt",
-        path: "/Donation-Receipt",
-      },
-      {
-        title: "Payment Tracking",
-        path: "/Payment-Tracking",
-      },
-       {
-        title: "QR Payment Support",
-        path: "/QR-Payment-Support",
-      },
-       {
-        title: "Razorpay Integration",
-        path: "/Razorpay-Integration",
-      },{
-        title: "PhonePe Integration",
-        path: "/PhonePe-Integrationt",
-      },{
-        title: "UPI Payment",
-        path: "/UPI-Payment",
-      },
+     
     ],
 
    

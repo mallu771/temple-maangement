@@ -71,11 +71,6 @@ const menus = [
         title: "Festival ticket",
         path: "/Festival-ticket-booking",
         icon: CalendarDays
-      },
-      {
-        title: "Time-slot",
-        path: "/Time-slot-management",
-        icon: Clock3
       }
     ]
   },
@@ -178,11 +173,7 @@ const menus = [
         path: "/Monthly-Reports",
         icon: CalendarDays
       },
-       {
-        title: "Export PDF/Excel",
-        path: "/Export-PDF-Excel",
-        icon: CalendarDays
-      },
+       
       
     ]
   },
@@ -196,48 +187,10 @@ const menus = [
         path: "/Online-Donation",
         icon: Landmark
       },
-      {
-        title: "Donation Receipt",
-        path: "/Donation-Receipt",
-        icon: Image
-      },
-      {
-        title: "Payment Tracking",
-        path: "/Payment-Tracking",
-        icon: CalendarDays
-      },
-       {
-        title: "QR Payment Support",
-        path: "/QR-Payment-Support",
-        icon: CalendarDays
-      },
-      {
-        title: "Razorpay Integration",
-        path: "/Razorpay-Integration",
-        icon: CalendarDays
-      },{
-        title: "PhonePe Integration",
-        path: "/PhonePe-Integrationt",
-        icon: CalendarDays
-      },{
-        title: "UPI Payment",
-        path: "/UPI-Payment",
-        icon: CalendarDays
-      },
+    
     ]
   },
 
-  /* {
-    title: "Users",
-    path: "/users",
-    icon: Users
-  },
-
-  {
-    title: "Settings",
-    path: "/settings",
-    icon: Settings
-  } */
 ]
 
 function Sidebar() {

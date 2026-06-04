@@ -19,7 +19,7 @@ import PoojaDetails from "./pages/PoojaDetails"
 import ArchanaBooking from "./pages/ArchanaBooking";
 import PoojaBooking from "./pages/PoojaBooking";
 import FestivalTicketBooking from "./pages/FestivalTicketBooking";
-import TimeSlotManagement from "./pages/TimeSlotManagement";
+
 
 import CommitteeMembers from "./pages/CommitteeMembers";
 import VolunteerTracking from "./pages/VolunteerTracking";
@@ -37,7 +37,6 @@ import DonationItems from "./pages/DonationItems"
 import PrasadaMaterials from "./pages/PrasadaMaterials"
 import DailyAccounts from "./pages/DailyAccounts"
 import AuditReports from "./pages/AuditReports"
-import MonthlyReports from "./pages/MonthlyReports"
 import ExportReports from "./pages/ExportReports";
 import OnlineDonation from "./pages/OnlineDonation";
 import DonationReceipt from "./pages/DonationReceipt";
@@ -45,6 +44,9 @@ import PaymentTracking from "./pages/PaymentTracking";
 import QRPayment from "./pages/QRPayment";
 import RazorpayPayment from "./pages/RazorpayPayment";
 import UpiPayment from "./pages/UpiPayment";
+import MonthlyReports from "./pages/MonthlyReports"
+import Profile from "./pages/Profile"
+import Security from "./pages/Security"
 
 function App() {
   const token = localStorage.getItem("token")
@@ -67,11 +69,10 @@ function App() {
             path="/"
             element={<Dashboard />}
           />
- <Route
+        <Route
           path="/temple-history"
           element={<TempleHistory />}
         />
-
         <Route
           path="/temple-images"
           element={<TempleImages />}
@@ -81,7 +82,6 @@ function App() {
           path="/festivals"
           element={<Festivals />}
         />
-
         <Route
           path="/daily-timings"
           element={<DailyTimings />}
@@ -90,8 +90,7 @@ function App() {
           path="/pooja-details"
           element={<PoojaDetails />}
         />
-         <Route
-          path="/Archana-booking"
+         <Route path="/Archana-booking"
           element={<ArchanaBooking />}
         />
          <Route
@@ -101,12 +100,8 @@ function App() {
          <Route
           path="/Festival-ticket-booking"
           element={<FestivalTicketBooking />}
-        />
-         <Route
-          path="/Time-slot-management"
-          element={<TimeSlotManagement />}
-        />
-<Route
+        />     
+        <Route
           path="/Committee-Members"
           element={<CommitteeMembers />}
         />
@@ -166,38 +161,17 @@ function App() {
           path="/Monthly-Reports"
           element={<MonthlyReports   />}
         />
-           <Route
-          path="/Export-PDF-Excel"
-          element={<ExportReports   />}
-        />
+           
+          
          <Route
           path="/Online-Donation"
           element={<OnlineDonation/>}
-        /> <Route
-          path="/Donation-Receipt"
-          element={<DonationReceipt    />}
-        /> <Route
-          path="/Payment-Tracking"
-          element={<PaymentTracking    />}
-        /> <Route
-          path="/QR-Payment-Support"
-          element={<QRPayment />}
-        /> <Route
-          path="/Razorpay-Integration"
-          element={<RazorpayPayment    />}
-        /> <Route
-          path="/Upi-Payment"
-          element={<UpiPayment    />}
-        />
-          <Route
-            path="/users"
-            element={<Users />}
-          />
+        /> 
+         <Route path="/profile" element={<Profile />} />
 
-          <Route
-            path="/settings"
-            element={<Settings />}
-          />
+<Route path="/settings" element={<Settings />} />
+
+<Route path="/security" element={<Security />} />
         </>
       ) : (
         <Route
