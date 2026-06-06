@@ -1,27 +1,9 @@
 import { httpReq }
 from "../helpers/httpReq"
 
-export async function insertRegister(
-  payload
-) {
+export async function insertRegister(payload) {
 
-  const query = `
-  mutation(
-    $action:String!,
-    $table:String!,
-    $fields:JSON
-  ){
-    execute(
-      action:$action,
-      table:$table,
-      fields:$fields
-    )
-  }
-  `
-  console.log(payload.updatedUsers.newUser.name)
-
-  return await httpReq(
-    query,
+  const result = await httpReq(
     {
       action: "insert",
       table: "register",
@@ -32,4 +14,20 @@ export async function insertRegister(
       }
     }
   )
+  return result
+}
+
+export async function selectRegister() {
+  const data = await httpReq( {
+    action: "select",
+    table: "register",
+    fields: [
+      "id",
+      "name",
+      "email",
+      "password"
+    ]
+  })
+
+  return data.execute
 }

@@ -3,12 +3,21 @@ import {
 } from "../config/constants"
 
 export async function httpReq(
-  query,
   variables = {}
 ) {
-console.log("QUERY =>", query)
-console.log("VARIABLES =>", variables)
-console.log("API_URL =>", API_URL)
+const query = `
+  mutation(
+    $action:String!,
+    $table:String!,
+    $fields:JSON
+  ){
+    execute(
+      action:$action,
+      table:$table,
+      fields:$fields
+    )
+  }
+  `
   const response =
     await fetch(API_URL, {
       method: "POST",

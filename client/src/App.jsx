@@ -50,7 +50,7 @@ import Security from "./pages/Security"
 
 function App() {
   const token = localStorage.getItem("token")
-
+console.log("Token =>", token)
   return (
     <Routes>
       <Route

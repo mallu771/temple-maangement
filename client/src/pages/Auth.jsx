@@ -1,11 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import {
-  insertRegister
-} from "../api/api"
+import { insertRegister,selectRegister} from "../api/api";
+
 function Auth() {
   const navigate = useNavigate()
-
+ 
   const [isLogin, setIsLogin] =
     useState(true)
 
@@ -15,17 +14,24 @@ function Auth() {
       email: "",
       password: ""
     })
+ const [users, setUsers] = useState([])
 
-  const [users, setUsers] = useState(
-    JSON.parse(localStorage.getItem("users")) || []
-  )
+useEffect(() => {
+  loadUsers()
+}, [])
+
+const loadUsers = async () => {
+  const data = await selectRegister()
+  setUsers(data)
+}
+
 
   const [error, setError] = useState("")
   const [success, setSuccess] =
     useState("")
 
   const handleChange = e => {
-    setFormData({
+setFormData({
       ...formData,
       [e.target.name]: e.target.value
     })
@@ -33,10 +39,7 @@ function Auth() {
 
   // REGISTER
   const handleRegister = async () => {
-    const existingUser = users.find(
-      user =>
-        user.email === formData.email
-    )
+    const existingUser = users.find( user => user.email === formData.email)
 
     if (existingUser) {
       setError("User already exists")
@@ -77,36 +80,32 @@ function Auth() {
   }
 
   // LOGIN
-  const handleLogin = async () => {
+ const handleLogin = async () => {
+  try {
+
     const validUser = users.find(
       user =>
-        user.email === formData.email &&
-        user.password ===
-          formData.password
+        user.email == formData.email &&
+        user.password == formData.password
     )
 
     if (!validUser) {
-      setError(
-        "Invalid email or password"
-      )
-
-      setSuccess("")
+      setError("Invalid email or password")
       return
     }
-
-    localStorage.setItem(
-      "token",
-      "demo-token"
-    )
 
     localStorage.setItem(
       "currentUser",
       JSON.stringify(validUser)
     )
-
+localStorage.setItem("token", "demo-token")
     navigate("/")
+    console.log("Login successful")
+  } catch (err) {
+    console.error(err)
+    setError(err.message)
   }
-
+}
   const handleSubmit = e => {
     e.preventDefault()
 
