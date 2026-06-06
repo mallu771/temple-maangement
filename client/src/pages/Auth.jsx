@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-
+import {
+  insertRegister
+} from "../api/api"
 function Auth() {
   const navigate = useNavigate()
 
@@ -30,7 +32,7 @@ function Auth() {
   }
 
   // REGISTER
-  const handleRegister = () => {
+  const handleRegister = async () => {
     const existingUser = users.find(
       user =>
         user.email === formData.email
@@ -48,16 +50,15 @@ function Auth() {
       password: formData.password
     }
 
-    const updatedUsers = [
+    const updatedUsers = {
       ...users,
       newUser
-    ]
+    }
 
-    localStorage.setItem(
-      "users",
-      JSON.stringify(updatedUsers)
-    )
 
+ await insertRegister({
+          updatedUsers
+  })
     setUsers(updatedUsers)
 
     setSuccess(
@@ -76,7 +77,7 @@ function Auth() {
   }
 
   // LOGIN
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const validUser = users.find(
       user =>
         user.email === formData.email &&
